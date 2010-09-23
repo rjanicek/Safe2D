@@ -1,0 +1,13 @@
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12px;
+}
+
+table {
+	font-size: 12px;
+}
+
+.warning {
+	font-weight: bold;
+	color: red;
+}

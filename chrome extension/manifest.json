@@ -1,0 +1,22 @@
+{
+  "name": "Safe2D - Form Encryption",
+  "version": "1.1.0",
+  "description": "Encryption for web forms to keep your information private and secure.",
+  "icons": { "48": "images/lucchetto_ottone_archit_02r_48.png",
+          	 "128": "images/lucchetto_ottone_archit_02r_128.png" },
+  "permissions": ["http://*/*", "https://*/*"],
+  "background_page": "background.html",
+  "browser_action": {
+    "default_icon": "images/cipher2d_padlock_locked_19_gray.png",
+    "default_title": "Safe2D is Off",
+    "popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "css": ["js/jquery.cursorMessage.0.2/jquery.cursorMessage.css", "content.css"],
+      "js": ["js/jquery.1.4.2.min.js", "js/jquery.cursorMessage.0.2/jquery.cursorMessage.js", "js/jquery.ba-replacetext.min.js", "content.js"],
+      "all_frames": true
+    }
+  ]
+}

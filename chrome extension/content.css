@@ -1,0 +1,10 @@
+.spin-clockwise {
+	-webkit-transform: rotate(360deg);
+	-webkit-transition: all 1s ease-out;
+ }
+
+ .spin-anticlockwise {
+	-webkit-transform: rotate(-360deg);
+	-webkit-transition: all 1s ease-out;
+ }
+ 

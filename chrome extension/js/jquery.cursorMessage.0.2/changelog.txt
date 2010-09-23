@@ -1,0 +1,7 @@
+#0.1
+initial release
+
+#0.2 - 10-9-2009
+- added "0" option for hideTimeout parameter: the cursorMessage will NOT auto-hide
+- added $.hideCursorMessage() to manually trigger the hiding of the cursormessage. (e.g. onmouseout)
+
