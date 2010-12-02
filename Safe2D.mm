@@ -2,6 +2,8 @@
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node CREATED="1271293158338" ID="Freemind_Link_1590145293" MODIFIED="1271293163437" TEXT="Safe2D">
 <node CREATED="1271293195268" ID="_" MODIFIED="1271293198880" POSITION="right" TEXT="to do">
+<node CREATED="1291265466062" ID="Freemind_Link_206562326" MODIFIED="1291265526070" TEXT="only display lock icon when hovering over text field"/>
+<node CREATED="1291265534603" ID="Freemind_Link_1285723834" MODIFIED="1291265540229" TEXT="fix memory leak"/>
 <node CREATED="1272161950136" ID="Freemind_Link_94201079" MODIFIED="1272161972185" TEXT="use jQuery delegate() to replace interval parsing"/>
 <node CREATED="1271794660814" ID="Freemind_Link_1798708609" MODIFIED="1271794694395" TEXT="don&apos;t parse dom if inactive"/>
 <node CREATED="1271293356013" ID="Freemind_Link_371188879" MODIFIED="1271293379187" TEXT="detect ciphers in content and decrypt"/>
