@@ -15,7 +15,7 @@
 if(jQuery) {
 	( function($) {
 	$.cursorMessageData = {}; // needed for e.g. timeoutId
-	//start registring mouse coöridnates from the start!
+	//start registring mouse cooridnates from the start!
 
 	$(window).ready(function(e) {
 		if ($('#cursorMessageDiv').length==0) {
