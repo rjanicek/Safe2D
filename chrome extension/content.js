@@ -1,20 +1,27 @@
 // ----------------------------------------------------------------------------
 // Text Input Cryptography
 
-window.setInterval("addCipherFeaturesToEncryptableElements()", 1000);
+addDelegateToEncryptableElements();
 
-function addCipherFeaturesToEncryptableElements() {
-	chrome.extension.sendRequest({action: "isActive"}, function(response) {
-		var isActive = response.result; 
-		if (isActive) {
-			$("textarea,input:text").not("[cipher]").each(function(){
-				addCryptoFeaturesToElement(this);
-			});
-		}
-		else
-			$("[cipher]").each(function(){
-				removeCryptoFeaturesFromElement(this);
-			});
+function addDelegateToEncryptableElements() {
+	$("body").delegate("textarea,input:text", "mouseenter", function(){
+		var element = this;
+		chrome.extension.sendRequest({action: "isActive"}, function (response) {
+			var isActive = response.result;
+			if (isActive) {
+				addCryptoFeaturesToElement(element);
+			}
+		});
+	});
+	
+	$("body").delegate("textarea,input:text", "mouseleave", function(){
+		var element = this;
+		chrome.extension.sendRequest({action: "isActive"}, function (response) {
+			var isActive = response.result;
+			if (isActive) {
+				removeCryptoFeaturesFromElement(element);
+			}
+		});
 	});
 }
 
@@ -81,29 +88,6 @@ function decryptElement(element) {
 		else if (response.error != null)
 			$.cursorMessage(response.error, {hideTimeout:5000});
 	});
-}
-
-// This might fix the gmail field reverting back to old value on save issue.
-// But there is a bug in webkit that prevents proper keyboard events.
-// Revisit this when bug is fixed.
-// http://code.google.com/p/chromium/issues/detail?id=27048
-function triggerEventInContentContext(element) {
-//	var html = "<script>"
-//			 + "	try {"
-//			 + "		var keyIdentifier = 'U+0009';"
-//			 + "		var shiftKey = false;"
-//			 + "		var altKey = true;"
-//			 + "		var element = document.getElementById('" + $(element).attr("id") + "');"
-//			 + "		element.focus();"
-//			 + "		var event = document.createEvent('KeyboardEvents');"
-//			 + "		event.initKeyboardEvent('keydown', true, true, document.defaultView, keyIdentifier, 0, false, false, false, false, false);"
-//			 + "		element.dispatchEvent(event);"
-//			 + "	} catch (e) {"
-//			 + "		alert(e);"
-//			 + "	}"
-//			 + "</script>";
-//
-//	$(document.body).append(html);
 }
 
 //-----------------------------------------------------------------------------

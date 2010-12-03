@@ -34,7 +34,7 @@ function getState() {
 		state = JSON.parse(localStorage["state"]);
 	}
 	catch (error) {
-		setState(defaultState)
+		setState(defaultState);
 		state = JSON.parse(localStorage["state"]);
 	}
 	
@@ -50,30 +50,29 @@ function getState() {
 function setupMessageHandlers() {
 	chrome.extension.onRequest.addListener(
 		function(request, sender, sendResponse) {
-			switch (request.action) {
-			case "isActive":
-				sendResponse({result: isActive});
-				break;
-			case "isEncrypted":
-				sendResponse({result: isEncrypted(request.data)});
-				break;
-			case "encrypt":
-				sendResponse({result: encrypt(request.data), isKeyEmpty: getState().cryptoKey.length == 0});
-				break;
-			case "decrypt":
-				try {
+			try {
+				switch (request.action) {
+				case "isActive":
+					sendResponse({result: isActive});
+					break;
+				case "isEncrypted":
+					sendResponse({result: isEncrypted(request.data)});
+					break;
+				case "encrypt":
+					sendResponse({result: encrypt(request.data), isKeyEmpty: getState().cryptoKey.length == 0});
+					break;
+				case "decrypt":
 					sendResponse({result: decrypt(request.data)});
+					break;
+	
+				default:
+					// Always send some response so caller isn't left hanging.
+					sendResponse({});
+					break;
 				}
-				catch (error) {
-					sendResponse({error: error});
-				}
-				
-				break;
-
-			default:
-				// Always send some response so caller isn't left hanging.
-				sendResponse({});
-				break;
+			}
+			catch (error) {
+				sendResponse({error: error});
 			}
 		});
 }
